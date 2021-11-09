@@ -1,9 +1,9 @@
 <template>
-    <div class="form">
-        <div class="form-container_overlay absolute w-screen h-screen bg-gray-400 bg-opacity-40"></div>
-        <form @submit.prevent="onSubmit" class="relative">
+    <div class="form form-container absolute w-screen h-screen">
+        <div class="form-container_overlay absolute w-screen h-screen bg-gray-800 bg-opacity-40"></div>
+        <form @submit.prevent="onSubmit" class="relative flex flex-col justify-center items-center	mx-auto h-screen">
           <input
-            class="todo__input todo__input--title"
+            class="todo_input todo_input-title my-2 w-full h-14 p-4"
             name="title"
             type="text"
             placeholder="Titre"
@@ -12,7 +12,7 @@
           />
 
           <input
-            class="todo__input todo__input--place"
+            class="todo_input todo_input-place my-2 w-full h-14 p-4"
             name="place"
             type="text"
             placeholder="Lieu"
@@ -20,7 +20,7 @@
           />
 
           <input
-            class="todo__input todo__input--time"
+            class="todo_input todo_input-time my-2 w-full h-14 p-4"
             name="time"
             type="date"
             placeholder="Heure"
@@ -28,14 +28,14 @@
           />
 
           <textarea
-            class="todo__input todo__input--description"
+            class="todo_input todo_input-description my-2 w-full h-14 p-4"
             name="description"
             type="text"
             placeholder="Description"
             v-model="form.description"
           ></textarea>
 
-          <button type="submit">Valider</button>
+          <button type="submit" class="bg-blue-600">Valider</button>
         </form>
     </div>
 </template>
@@ -72,6 +72,12 @@ export default {
 
             this.tasks.push(task)
 
+            this.$emit('submit')
+            //reset form
+            Object.keys(this.form).forEach(key => {
+                this.form[key] = null
+            })
+
             this.id++
         }
     }
@@ -79,32 +85,31 @@ export default {
 </script>
 
 <style scoped>
-    form{
-        display: flex;
-         flex-direction: column;
-         width: 40%;
-    }
-
     form input,
     form textarea{
-        height: 4vh;
-        margin-bottom: 40px;
+        width: 50%;
         border: none;
-        border-bottom: 1px solid #333;
-        padding-left: 15px;
-        font-size: 16px;
+        border-bottom: 2px solid #3265e3;
+        background: transparent;
+        color: #fff;
+        font-size: 22px;
     }
+
+    form input::placeholder,
+    form textarea::placeholder{
+        color: #fff;
+    }
+
     form input:focus,
     form textarea:focus{
-        outline: none;
+        outline:none;
     }
+
     button{
-        width: 50%;
-        height: 30px;
-        border: none;
-        border-radius: 20px;
         color: #fff;
-        background-color: #000;
-        cursor: pointer;
+        font-size: 20px;
+        padding: 15px;
+        border-radius: 20px;
+        width: 15%;
     }
 </style>

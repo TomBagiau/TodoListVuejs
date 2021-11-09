@@ -8999,6 +8999,8 @@ var _default = {
   },
   methods: {
     onSubmit: function onSubmit(event) {
+      var _this = this;
+
       console.log(this.form);
 
       var task = _objectSpread(_objectSpread({}, this.form), {}, {
@@ -9006,142 +9008,157 @@ var _default = {
       });
 
       this.tasks.push(task);
+      this.$emit('submit'); //reset form
+
+      Object.keys(this.form).forEach(function (key) {
+        _this.form[key] = null;
+      });
       this.id++;
     }
   }
 };
 exports.default = _default;
-        var $b78f79 = exports.default || module.exports;
+        var $094064 = exports.default || module.exports;
       
-      if (typeof $b78f79 === 'function') {
-        $b78f79 = $b78f79.options;
+      if (typeof $094064 === 'function') {
+        $094064 = $094064.options;
       }
     
         /* template */
-        Object.assign($b78f79, (function () {
+        Object.assign($094064, (function () {
           var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form" }, [
-    _c("div", {
-      staticClass:
-        "form-container_overlay absolute w-screen h-screen bg-gray-400 bg-opacity-40",
-    }),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "relative",
-        on: {
-          submit: function ($event) {
-            $event.preventDefault()
-            return _vm.onSubmit.apply(null, arguments)
+  return _c(
+    "div",
+    { staticClass: "form form-container absolute w-screen h-screen" },
+    [
+      _c("div", {
+        staticClass:
+          "form-container_overlay absolute w-screen h-screen bg-gray-800 bg-opacity-40",
+      }),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass:
+            "relative flex flex-col justify-center items-center\tmx-auto h-screen",
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.onSubmit.apply(null, arguments)
+            },
           },
         },
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.title,
-              expression: "form.title",
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.title,
+                expression: "form.title",
+              },
+            ],
+            staticClass: "todo_input todo_input-title my-2 w-full h-14 p-4",
+            attrs: {
+              name: "title",
+              type: "text",
+              placeholder: "Titre",
+              required: "",
             },
-          ],
-          staticClass: "todo__input todo__input--title",
-          attrs: {
-            name: "title",
-            type: "text",
-            placeholder: "Titre",
-            required: "",
-          },
-          domProps: { value: _vm.form.title },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "title", $event.target.value)
+            domProps: { value: _vm.form.title },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "title", $event.target.value)
+              },
             },
-          },
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.place,
-              expression: "form.place",
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.place,
+                expression: "form.place",
+              },
+            ],
+            staticClass: "todo_input todo_input-place my-2 w-full h-14 p-4",
+            attrs: { name: "place", type: "text", placeholder: "Lieu" },
+            domProps: { value: _vm.form.place },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "place", $event.target.value)
+              },
             },
-          ],
-          staticClass: "todo__input todo__input--place",
-          attrs: { name: "place", type: "text", placeholder: "Lieu" },
-          domProps: { value: _vm.form.place },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "place", $event.target.value)
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.time,
+                expression: "form.time",
+              },
+            ],
+            staticClass: "todo_input todo_input-time my-2 w-full h-14 p-4",
+            attrs: { name: "time", type: "date", placeholder: "Heure" },
+            domProps: { value: _vm.form.time },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "time", $event.target.value)
+              },
             },
-          },
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.time,
-              expression: "form.time",
+          }),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.description,
+                expression: "form.description",
+              },
+            ],
+            staticClass:
+              "todo_input todo_input-description my-2 w-full h-14 p-4",
+            attrs: {
+              name: "description",
+              type: "text",
+              placeholder: "Description",
             },
-          ],
-          staticClass: "todo__input todo__input--time",
-          attrs: { name: "time", type: "date", placeholder: "Heure" },
-          domProps: { value: _vm.form.time },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "time", $event.target.value)
+            domProps: { value: _vm.form.description },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "description", $event.target.value)
+              },
             },
-          },
-        }),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.description,
-              expression: "form.description",
-            },
-          ],
-          staticClass: "todo__input todo__input--description",
-          attrs: {
-            name: "description",
-            type: "text",
-            placeholder: "Description",
-          },
-          domProps: { value: _vm.form.description },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "description", $event.target.value)
-            },
-          },
-        }),
-        _vm._v(" "),
-        _c("button", { attrs: { type: "submit" } }, [_vm._v("Valider")]),
-      ]
-    ),
-  ])
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "bg-blue-600", attrs: { type: "submit" } },
+            [_vm._v("Valider")]
+          ),
+        ]
+      ),
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -9150,7 +9167,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-b78f79",
+            _scopeId: "data-v-094064",
             functional: undefined
           };
         })());
@@ -9163,9 +9180,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$b78f79', $b78f79);
+            api.createRecord('$094064', $094064);
           } else {
-            api.reload('$b78f79', $b78f79);
+            api.reload('$094064', $094064);
           }
         }
 
@@ -9195,12 +9212,25 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   props: ["task", "tasks"],
   data: function data() {
     return {
       completed: false
     };
+  },
+  computed: {
+    classes: function classes() {
+      var c = {};
+      c["task--".concat(this.currentClass)] = true;
+      c["opacity-60"] = this.task.completed;
+      return c;
+    }
   },
   methods: {
     onClick: function onClick() {
@@ -9214,14 +9244,14 @@ var _default = {
   mounted: function mounted() {}
 };
 exports.default = _default;
-        var $0bf5dc = exports.default || module.exports;
+        var $2ae127 = exports.default || module.exports;
       
-      if (typeof $0bf5dc === 'function') {
-        $0bf5dc = $0bf5dc.options;
+      if (typeof $2ae127 === 'function') {
+        $2ae127 = $2ae127.options;
       }
     
         /* template */
-        Object.assign($0bf5dc, (function () {
+        Object.assign($2ae127, (function () {
           var render = function () {
   var _vm = this
   var _h = _vm.$createElement
@@ -9229,12 +9259,34 @@ exports.default = _default;
   return _c(
     "div",
     {
-      staticClass: "task",
+      staticClass:
+        "task cursor-pointer container mx-auto my-6 rounded px-6 py-4 flex justify-between items-center bg-blue-200",
       class: { "task--completed": _vm.completed },
       on: { click: _vm.onClick },
     },
     [
-      _c("div", { staticClass: "task_content" }, [
+      _c(
+        "div",
+        {
+          staticClass: "task__check w-8 h-8 rounded bg-blue-600 mr-10 relative",
+        },
+        [
+          _c("div", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.task.completed,
+                expression: "task.completed",
+              },
+            ],
+            staticClass:
+              "checked absolute w-6 h-6 rounded bg-red-600  opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+          }),
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "task_content mr-auto" }, [
         _c("h2", { staticClass: "task_title font-black text-lg uppercase" }, [
           _vm._v(_vm._s(_vm.task.title)),
         ]),
@@ -9271,7 +9323,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-0bf5dc",
+            _scopeId: "data-v-2ae127",
             functional: undefined
           };
         })());
@@ -9284,9 +9336,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$0bf5dc', $0bf5dc);
+            api.createRecord('$2ae127', $2ae127);
           } else {
-            api.reload('$0bf5dc', $0bf5dc);
+            api.reload('$2ae127', $2ae127);
           }
         }
 
@@ -9324,78 +9376,131 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
       tasks: [],
-      toggle: false
+      showForm: false
     };
   },
   components: {
     VForm: _VForm.default,
     VTask: _VTask.default
   },
+  computed: {
+    labelBtn: function labelBtn() {
+      return this.showForm ? '-' : '+';
+    }
+  },
+  mounted: function mounted() {
+    var tasks = localStorage.getItem('todo');
+
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    }
+  },
+  watch: {
+    tasks: {
+      handler: function handler(val, oldVal) {
+        localStorage.setItem('todo', JSON.stringify(val));
+      },
+      deep: true
+    }
+  },
   methods: {
-    saveData: function saveData() {},
     onDelete: function onDelete(index) {
       var id = this.tasks.findIndex(function (task) {
         return task.id === index;
       });
       this.tasks.splice(id, 1);
     },
-    openForm: function openForm() {
-      this.toggle = !this.toggle;
+    toggleForm: function toggleForm(event, value) {
+      if (value !== undefined) {
+        this.showForm.value;
+      } else {
+        this.showForm = !this.showForm;
+      }
     }
   }
 };
 exports.default = _default;
-        var $aeb5f1 = exports.default || module.exports;
+        var $895a13 = exports.default || module.exports;
       
-      if (typeof $aeb5f1 === 'function') {
-        $aeb5f1 = $aeb5f1.options;
+      if (typeof $895a13 === 'function') {
+        $895a13 = $895a13.options;
       }
     
         /* template */
-        Object.assign($aeb5f1, (function () {
+        Object.assign($895a13, (function () {
           var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "TodoApp" },
+    { staticClass: "TodoApp max-w-screen-xl" },
     [
-      _vm.toggle == true
-        ? _c(
-            "div",
-            { staticClass: "openForm" },
-            [_c("VForm", { attrs: { tasks: _vm.tasks } })],
-            1
-          )
-        : _vm._e(),
+      _c(
+        "button",
+        {
+          staticClass:
+            "fixed bottom-4 right-4 w-20 h-20 rounded-full bg-blue-600 text-white text-xl z-10 plusmois",
+          on: { click: _vm.toggleForm },
+        },
+        [_vm._v(_vm._s(_vm.labelBtn))]
+      ),
       _vm._v(" "),
-      _vm._l(_vm.tasks, function (task) {
-        return _c("VTask", {
-          key: task.id,
-          attrs: { task: task },
-          on: { delete: _vm.onDelete },
-        })
-      }),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _c("VForm", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.showForm,
+                expression: "showForm",
+              },
+            ],
+            attrs: { tasks: _vm.tasks },
+            on: {
+              submit: function ($event) {
+                return _vm.toggleForm(null, false)
+              },
+            },
+          }),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
-        {
-          staticClass: "btnOpenClose",
-          on: {
-            click: function ($event) {
-              return _vm.openForm()
-            },
-          },
-        },
-        [_c("i", { staticClass: "fas fa-plus" })]
+        { staticClass: "tasks overflow-auto" },
+        [
+          _c(
+            "transition-group",
+            { attrs: { name: "list", tag: "div" } },
+            _vm._l(_vm.tasks, function (task) {
+              return _c("VTask", {
+                key: task.id,
+                attrs: { task: task },
+                on: { delete: _vm.onDelete },
+              })
+            }),
+            1
+          ),
+        ],
+        1
       ),
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
@@ -9405,7 +9510,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-aeb5f1",
+            _scopeId: "data-v-895a13",
             functional: undefined
           };
         })());
@@ -9418,9 +9523,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$aeb5f1', $aeb5f1);
+            api.createRecord('$895a13', $895a13);
           } else {
-            api.reload('$aeb5f1', $aeb5f1);
+            api.reload('$895a13', $895a13);
           }
         }
 
@@ -9473,7 +9578,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53327" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57285" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

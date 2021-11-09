@@ -1,10 +1,16 @@
 <template>
-    <div class="TodoApp">
-        <div class="openForm" v-if="toggle == true">
-            <VForm :tasks="tasks"></VForm>
-        </div>
-        <VTask v-for="task in tasks" :key="task.id" :task="task"  @delete="onDelete"></VTask>
-        <div class="btnOpenClose" @click="openForm()"><i class="fas fa-plus"></i></div>
+    <div class="TodoApp max-w-screen-xl">
+        <button @click="toggleForm" class="fixed bottom-4 right-4 w-20 h-20 rounded-full bg-blue-600 text-white text-xl z-10 plusmois">{{ labelBtn }}</button>
+
+    <transition name="fade">
+      <VForm v-show="showForm" :tasks="tasks" @submit="toggleForm(null, false)"></VForm>
+    </transition>
+
+    <div class="tasks overflow-auto">
+      <transition-group name="list" tag="div">
+        <VTask v-for="task in tasks" :key="task.id" :task="task" @delete="onDelete"></VTask>
+      </transition-group>
+    </div>
     </div>
     
 </template>
@@ -18,7 +24,7 @@ export default{
     data(){
         return {
             tasks: [],
-            toggle: false
+            showForm: false,
         }
     },
 
@@ -27,19 +33,42 @@ export default{
         VTask
     },
 
+    computed: {
+        labelBtn() {
+            return this.showForm ? '-' : '+'
+        }
+    },
+
+    mounted() {
+    const tasks = localStorage.getItem('todo')
+    if (tasks) {
+      this.tasks = JSON.parse(tasks)
+    }
+  },
+
+  watch: {
+    tasks: {
+      handler: (val, oldVal) => {
+        localStorage.setItem('todo', JSON.stringify(val))
+      },
+      deep: true
+    }
+  },
+
     methods: {
-        saveData(){
-
-        },
-
         onDelete(index){
             const id = this.tasks.findIndex((task) => task.id === index)
             this.tasks.splice(id, 1)
         },
-        openForm(){
-            this.toggle = !this.toggle
+
+        toggleForm(event, value){
+            if(value !== undefined){
+                this.showForm.value
+            } else {
+                this.showForm = !this.showForm
+            }
         }
-    }
+    },
 }
 </script>
 
@@ -48,25 +77,28 @@ export default{
 
 <style scoped>
 
-    .TodoApp{
-        width: 100%;
-    }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}
+.list-enter-active {
+  transition: all 1s;
+}
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter{
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-leave-to{
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.plusmois{
+  font-size: 60px;
+}
 
-   .btnOpenClose{
-       position: absolute;
-       cursor: pointer;
-       margin-left: 90%;
-   }
-
-   .btnOpenClose i{
-       color: #fff;
-       background-color: #000;
-       font-size: 45px;
-       padding: 15px;
-       border-radius: 50%;
-   }
-
-   .openForm{
-       position: relative;
-   }
 </style>
