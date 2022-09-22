@@ -2,7 +2,7 @@ form input[data-v-094064],
 form textarea[data-v-094064]{
     width: 50%;
     border: none;
-    border-bottom: 2px solid #3265e3;
+    border-bottom: 2px solid #F299A9;
     background: transparent;
     color: #fff;
     font-size: 22px;
@@ -17,6 +17,7 @@ form textarea[data-v-094064]:focus{
 }
 button[data-v-094064]{
     color: #fff;
+    background-color: #F299A9;
     font-size: 20px;
     padding: 15px;
     border-radius: 20px;
@@ -45,11 +46,14 @@ h2[data-v-2ae127]{
         font-weight: 600;
         padding-top: 10px;
 }
+.task__check[data-v-2ae127]{
+        background-color: #5E9ABF;
+}
 .task_place-time[data-v-2ae127]{
         margin-left: 20px;
         margin-top: 0px;
         margin-bottom: 15px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 600;
         color: grey;
         width: 90%;
@@ -71,6 +75,7 @@ h2[data-v-2ae127]{
         font-size: 20px;
         cursor: pointer;
         margin-top: 10px;
+        color: #142B59;
 }
 .task_content[data-v-2ae127]{
         width: 80%;
@@ -97,4 +102,6 @@ h2[data-v-2ae127]{
 }
 .plusmois[data-v-895a13]{
   font-size: 60px;
+  background-color: #F299A9;
+  color: #142B59;
 }

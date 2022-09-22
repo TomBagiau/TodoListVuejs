@@ -9150,11 +9150,9 @@ exports.default = _default;
             },
           }),
           _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "bg-blue-600", attrs: { type: "submit" } },
-            [_vm._v("Valider")]
-          ),
+          _c("button", { staticClass: "valid", attrs: { type: "submit" } }, [
+            _vm._v("Valider"),
+          ]),
         ]
       ),
     ]
@@ -9262,29 +9260,24 @@ exports.default = _default;
       staticClass:
         "task cursor-pointer container mx-auto my-6 rounded px-6 py-4 flex justify-between items-center bg-blue-200",
       class: { "task--completed": _vm.completed },
+      attrs: { id: "task" },
       on: { click: _vm.onClick },
     },
     [
-      _c(
-        "div",
-        {
-          staticClass: "task__check w-8 h-8 rounded bg-blue-600 mr-10 relative",
-        },
-        [
-          _c("div", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.task.completed,
-                expression: "task.completed",
-              },
-            ],
-            staticClass:
-              "checked absolute w-6 h-6 rounded bg-red-600  opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-          }),
-        ]
-      ),
+      _c("div", { staticClass: "task__check w-8 h-8 rounded mr-10 relative" }, [
+        _c("div", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.task.completed,
+              expression: "task.completed",
+            },
+          ],
+          staticClass:
+            "checked absolute w-6 h-6 rounded bg-red-600  opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+        }),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "task_content mr-auto" }, [
         _c("h2", { staticClass: "task_title font-black text-lg uppercase" }, [
@@ -9382,6 +9375,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
@@ -9450,7 +9444,7 @@ exports.default = _default;
         "button",
         {
           staticClass:
-            "fixed bottom-4 right-4 w-20 h-20 rounded-full bg-blue-600 text-white text-xl z-10 plusmois",
+            "fixed bottom-4 right-4 w-20 h-20 rounded-full text-xl z-10 plusmois",
           on: { click: _vm.toggleForm },
         },
         [_vm._v(_vm._s(_vm.labelBtn))]
@@ -9549,7 +9543,7 @@ new _vue.default({
   render: function render(createElement) {
     return createElement(_TodoApp.default);
   }
-}).$mount('#app');
+}).$mount("#app");
 },{"vue":"node_modules/vue/dist/vue.runtime.esm.js","./TodoApp.vue":"src/TodoApp.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -9578,7 +9572,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57285" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50215" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

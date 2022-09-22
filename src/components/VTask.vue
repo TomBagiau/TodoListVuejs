@@ -1,11 +1,11 @@
 <template>
-    <div class="task cursor-pointer container mx-auto my-6 rounded px-6 py-4 flex justify-between items-center bg-blue-200" :class="{'task--completed': completed}" @click="onClick">
-        <div class="task__check w-8 h-8 rounded bg-blue-600 mr-10 relative">
+    <div id="task" class="task cursor-pointer container mx-auto my-6 rounded px-6 py-4 flex justify-between items-center bg-blue-200" :class="{'task--completed': completed}" @click="onClick">
+        <div class="task__check w-8 h-8 rounded mr-10 relative">
             <div class="checked absolute w-6 h-6 rounded bg-red-600  opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" v-show="task.completed"></div>
         </div>
 
         <div class="task_content mr-auto">
-             <h2 class="task_title font-black text-lg uppercase">{{ task.title }}</h2>
+            <h2 class="task_title font-black text-lg uppercase">{{ task.title }}</h2>
             <p class="task_place-time">{{ task.place }} - {{ task.time }}</p>
             <p class="task_description">{{ task.description }}</p>
         </div>
@@ -16,7 +16,7 @@
 
 
 <script>
-export default {
+export default{
     props: ["task", "tasks"],
 
     data(){
@@ -76,11 +76,14 @@ export default {
         font-weight: 600;
         padding-top: 10px;
     }
+    .task__check{
+        background-color: #5E9ABF;
+    }
     .task_place-time{
         margin-left: 20px;
         margin-top: 0px;
         margin-bottom: 15px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 600;
         color: grey;
         width: 90%;
@@ -105,6 +108,7 @@ export default {
         font-size: 20px;
         cursor: pointer;
         margin-top: 10px;
+        color: #142B59;
     }
 
     .task_content{

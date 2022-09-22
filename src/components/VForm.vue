@@ -35,7 +35,7 @@
             v-model="form.description"
           ></textarea>
 
-          <button type="submit" class="bg-blue-600">Valider</button>
+          <button type="submit" class="valid">Valider</button>
         </form>
     </div>
 </template>
@@ -89,7 +89,7 @@ export default {
     form textarea{
         width: 50%;
         border: none;
-        border-bottom: 2px solid #3265e3;
+        border-bottom: 2px solid #F299A9;
         background: transparent;
         color: #fff;
         font-size: 22px;
@@ -107,6 +107,7 @@ export default {
 
     button{
         color: #fff;
+        background-color: #F299A9;
         font-size: 20px;
         padding: 15px;
         border-radius: 20px;

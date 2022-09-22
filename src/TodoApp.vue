@@ -1,6 +1,6 @@
 <template>
     <div class="TodoApp max-w-screen-xl">
-        <button @click="toggleForm" class="fixed bottom-4 right-4 w-20 h-20 rounded-full bg-blue-600 text-white text-xl z-10 plusmois">{{ labelBtn }}</button>
+        <button @click="toggleForm" class="fixed bottom-4 right-4 w-20 h-20 rounded-full text-xl z-10 plusmois">{{ labelBtn }}</button>
 
     <transition name="fade">
       <VForm v-show="showForm" :tasks="tasks" @submit="toggleForm(null, false)"></VForm>
@@ -11,6 +11,7 @@
         <VTask v-for="task in tasks" :key="task.id" :task="task" @delete="onDelete"></VTask>
       </transition-group>
     </div>
+
     </div>
     
 </template>
@@ -20,9 +21,10 @@
 <script>
 import VForm from './components/VForm.vue'
 import VTask from './components/VTask.vue'
+
 export default{
     data(){
-        return {
+        return{
             tasks: [],
             showForm: false,
         }
@@ -70,6 +72,7 @@ export default{
         }
     },
 }
+
 </script>
 
 
@@ -99,6 +102,8 @@ export default{
 }
 .plusmois{
   font-size: 60px;
+  background-color: #F299A9;
+  color: #142B59;
 }
 
 </style>
