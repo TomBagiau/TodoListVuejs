@@ -1,3 +1,8 @@
 # TodoListVuejs
 
-npm start to run the project
+To Do List / Tasks List with VueJS
+
+# Set-up
+
+npm i
+npm start
