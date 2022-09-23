@@ -113,4 +113,10 @@ export default {
         border-radius: 20px;
         width: 15%;
     }
+
+    @media screen and (max-width:1000px){
+        button{
+            width: 50%;
+        }
+    }
 </style>

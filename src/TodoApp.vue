@@ -1,7 +1,6 @@
 <template>
   <div class="TodoApp max-w-screen-xl">
-    <button @click="toggleForm" class="fixed bottom-4 right-4 w-20 h-20 rounded-full text-xl z-10 plusmois">{{ labelBtn
-    }}</button>
+    <button @click="toggleForm" class="fixed bottom-4 right-4 w-20 h-20 rounded-full text-xl z-10 plusmois">{{ labelBtn }}</button>
 
     <transition name="fade">
       <VForm v-show="showForm" :tasks="tasks" @submit="toggleForm(null, false)"></VForm>
@@ -13,7 +12,7 @@
       </transition-group>
     </div>
 
-    <div v-else class="text-white text-center">
+    <div v-else class="text_notask text-white text-center">
       <VText />
     </div>
 
@@ -118,5 +117,12 @@ export default {
   font-size: 60px;
   background-color: #F299A9;
   color: #142B59;
+}
+
+.text_notask{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 </style>

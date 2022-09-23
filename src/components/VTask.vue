@@ -114,4 +114,11 @@ export default{
     .task_content{
         width: 80%;
     }
+
+    @media screen and (max-width: 1000px){
+        .task{
+            width: 80%;
+            margin: 10% auto;
+        }
+    }
 </style>
